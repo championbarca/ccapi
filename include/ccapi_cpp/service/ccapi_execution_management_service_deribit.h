@@ -469,6 +469,7 @@ class ExecutionManagementServiceDeribit : public ExecutionManagementService {
             message.setType(Message::Type::SUBSCRIPTION_STARTED);
             Element element;
             element.insert(CCAPI_INFO_MESSAGE, textMessage);
+            element.insert(CCAPI_EXCHANGE, CCAPI_EXCHANGE_NAME_DERIBIT);
             message.setElementList({element});
             messageList.emplace_back(std::move(message));
             if (it != document.MemberEnd()) {

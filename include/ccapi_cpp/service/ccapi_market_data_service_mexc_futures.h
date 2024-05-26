@@ -163,6 +163,7 @@ class MarketDataServiceMexcFutures : public MarketDataService {
           message.setType(Message::Type::SUBSCRIPTION_FAILURE);
           Element element;
           element.insert(CCAPI_ERROR_MESSAGE, textMessage);
+          element.insert(CCAPI_EXCHANGE, CCAPI_EXCHANGE_NAME_MEXC_FUTURES);
           message.setElementList({element});
           messageList.emplace_back(std::move(message));
         } else if (channel.rfind("rs.sub.", 0) == 0) {
@@ -172,6 +173,7 @@ class MarketDataServiceMexcFutures : public MarketDataService {
           message.setType(Message::Type::SUBSCRIPTION_STARTED);
           Element element;
           element.insert(CCAPI_INFO_MESSAGE, textMessage);
+          element.insert(CCAPI_EXCHANGE, CCAPI_EXCHANGE_NAME_MEXC_FUTURES);
           message.setElementList({element});
           messageList.emplace_back(std::move(message));
         }

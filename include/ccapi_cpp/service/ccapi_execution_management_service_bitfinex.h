@@ -487,6 +487,7 @@ class ExecutionManagementServiceBitfinex : public ExecutionManagementService {
         message.setType(status == "OK" ? Message::Type::SUBSCRIPTION_STARTED : Message::Type::SUBSCRIPTION_FAILURE);
         Element element;
         element.insert(status == "OK" ? CCAPI_INFO_MESSAGE : CCAPI_ERROR_MESSAGE, textMessage);
+        element.insert(CCAPI_EXCHANGE, CCAPI_EXCHANGE_NAME_BITFINEX);
         message.setElementList({element});
         messageList.emplace_back(std::move(message));
       }

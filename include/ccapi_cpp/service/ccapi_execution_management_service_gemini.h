@@ -379,6 +379,7 @@ class ExecutionManagementServiceGemini : public ExecutionManagementService {
         message.setCorrelationIdList({subscription.getCorrelationId()});
         Element element;
         element.insert(CCAPI_INFO_MESSAGE, textMessage);
+        element.insert(CCAPI_EXCHANGE, CCAPI_EXCHANGE_NAME_GEMINI);
         message.setElementList({element});
         messageList.emplace_back(std::move(message));
       }

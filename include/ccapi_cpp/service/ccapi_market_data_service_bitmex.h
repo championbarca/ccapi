@@ -261,6 +261,7 @@ class MarketDataServiceBitmex : public MarketDataService {
         message.setType(success ? Message::Type::SUBSCRIPTION_STARTED : Message::Type::SUBSCRIPTION_FAILURE);
         Element element;
         element.insert(success ? CCAPI_INFO_MESSAGE : CCAPI_ERROR_MESSAGE, textMessage);
+        element.insert(CCAPI_EXCHANGE, CCAPI_EXCHANGE_NAME_BITMEX);
         message.setElementList({element});
         messageList.emplace_back(std::move(message));
         event.setMessageList(messageList);

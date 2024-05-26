@@ -363,6 +363,7 @@ class ExecutionManagementServiceBitmart : public ExecutionManagementService {
           //              message.setType(Message::Type::SUBSCRIPTION_STARTED);
           //              Element element;
           //              element.insert(CCAPI_INFO_MESSAGE, sendString);
+          //              element.insert(CCAPI_EXCHANGE, CCAPI_EXCHANGE_NAME_BITMART);
           //              message.setElementList({element});
           //              messageList.emplace_back(std::move(message));
           //              event.addMessages(messageList);
@@ -411,6 +412,7 @@ class ExecutionManagementServiceBitmart : public ExecutionManagementService {
       message.setType(Message::Type::SUBSCRIPTION_STARTED);
       Element element;
       element.insert(CCAPI_INFO_MESSAGE, textMessage);
+      element.insert(CCAPI_EXCHANGE, CCAPI_EXCHANGE_NAME_BITMART);
       message.setElementList({element});
       messageList.emplace_back(std::move(message));
     } else {

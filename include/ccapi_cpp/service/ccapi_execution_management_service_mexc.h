@@ -498,6 +498,7 @@ class ExecutionManagementServiceMexc : public ExecutionManagementService {
         message.setType(success ? Message::Type::SUBSCRIPTION_STARTED : Message::Type::SUBSCRIPTION_FAILURE);
         Element element;
         element.insert(success ? CCAPI_INFO_MESSAGE : CCAPI_ERROR_MESSAGE, textMessage);
+        element.insert(CCAPI_EXCHANGE, CCAPI_EXCHANGE_NAME_MEXC);
         message.setElementList({element});
         messageList.emplace_back(std::move(message));
       }
@@ -517,6 +518,7 @@ class ExecutionManagementServiceMexc : public ExecutionManagementService {
           message.setType(Message::Type::EXECUTION_MANAGEMENT_EVENTS_PRIVATE_TRADE);
           std::vector<Element> elementList;
           Element element;
+          element.insert(CCAPI_EXCHANGE, CCAPI_EXCHANGE_NAME_MEXC);
           element.insert(CCAPI_TRADE_ID, std::string(d["t"].GetString()));
           element.insert(CCAPI_EM_ORDER_LAST_EXECUTED_PRICE, std::string(d["p"].GetString()));
           element.insert(CCAPI_EM_ORDER_LAST_EXECUTED_SIZE, std::string(d["v"].GetString()));

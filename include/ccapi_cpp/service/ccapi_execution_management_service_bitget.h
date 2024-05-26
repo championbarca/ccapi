@@ -391,6 +391,7 @@ Event createEvent(const Subscription& subscription, const std::string& textMessa
     message.setType(Message::Type::SUBSCRIPTION_STARTED);
     Element element;
     element.insert(CCAPI_INFO_MESSAGE, textMessage);
+    element.insert(CCAPI_EXCHANGE, CCAPI_EXCHANGE_NAME_BITGET);
     message.setElementList({element});
     messageList.emplace_back(std::move(message));
   } else if (eventStr == "error") {

@@ -8,8 +8,15 @@ class MyEventHandler : public EventHandler {
  public:
   bool processEvent(const Event& event, Session* session) override {
     if (event.getType() == Event::Type::SUBSCRIPTION_STATUS) {
-      
       std::cout << "Received an event of type SUBSCRIPTION_STATUS:\n" + event.toStringPretty(2, 2) << std::endl;
+      for (const auto& message : event.getMessageList()) {
+        for (const auto& element : message.getElementList()) {
+            const std::map<std::string, std::string>& elementNameValueMap = element.getNameValueMap();
+            for (const auto& x : elementNameValueMap) {
+              std::cout << x.first << " : " << x.second << std::endl;
+            }
+        }
+      }
     } else if (event.getType() == Event::Type::SUBSCRIPTION_DATA) {
       for (const auto& message : event.getMessageList()) {
         std::cout << std::string("Best bid and ask at ") + UtilTime::getISOTimestamp(message.getTime()) + " are:" << std::endl;

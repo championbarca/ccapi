@@ -129,6 +129,7 @@ class MarketDataServiceKrakenFutures : public MarketDataService {
           message.setType(status == "subscribed" ? Message::Type::SUBSCRIPTION_STARTED : Message::Type::SUBSCRIPTION_FAILURE);
           Element element;
           element.insert(status == "subscribed" ? CCAPI_INFO_MESSAGE : CCAPI_ERROR_MESSAGE, textMessage);
+          element.insert(CCAPI_EXCHANGE, CCAPI_EXCHANGE_NAME_KRAKEN_FUTURES);
           message.setElementList({element});
           messageList.emplace_back(std::move(message));
           event.setMessageList(messageList);

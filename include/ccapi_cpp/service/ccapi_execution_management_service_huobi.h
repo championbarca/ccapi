@@ -431,6 +431,7 @@ class ExecutionManagementServiceHuobi : public ExecutionManagementServiceHuobiBa
         message.setType(Message::Type::SUBSCRIPTION_STARTED);
         Element element;
         element.insert(CCAPI_INFO_MESSAGE, textMessage);
+        element.insert(CCAPI_EXCHANGE, CCAPI_EXCHANGE_NAME_HUOBI);
         message.setElementList({element});
         messageList.emplace_back(std::move(message));
       }

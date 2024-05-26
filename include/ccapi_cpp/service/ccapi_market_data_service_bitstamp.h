@@ -117,6 +117,7 @@ class MarketDataServiceBitstamp : public MarketDataService {
       message.setType(Message::Type::SUBSCRIPTION_STARTED);
       Element element;
       element.insert(CCAPI_INFO_MESSAGE, textMessage);
+      element.insert(CCAPI_EXCHANGE, CCAPI_EXCHANGE_NAME_BITSTAMP);
       message.setElementList({element});
       messageList.emplace_back(std::move(message));
       event.setMessageList(messageList);
