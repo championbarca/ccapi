@@ -21,6 +21,9 @@
 #ifndef CCAPI_MARKET_DEPTH
 #define CCAPI_MARKET_DEPTH "MARKET_DEPTH"
 #endif
+#ifndef CCAPI_EXCHANGE
+#define CCAPI_EXCHANGE "EXCHANGE"
+#endif
 #ifndef CCAPI_TRADE
 #define CCAPI_TRADE "TRADE"
 #endif

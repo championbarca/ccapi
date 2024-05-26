@@ -258,6 +258,7 @@ class Service : public std::enable_shared_from_this<Service> {
     message.setCorrelationIdList(correlationIdList);
     Element element;
     element.insert(CCAPI_ERROR_MESSAGE, errorMessage);
+    element.insert(CCAPI_EXCHANGE, this->exchangeName);
     message.setElementList({element});
     event.setMessageList({message});
     this->eventHandler(event, eventQueuePtr);
@@ -283,6 +284,7 @@ class Service : public std::enable_shared_from_this<Service> {
     Element element;
     element.insert(CCAPI_HTTP_STATUS_CODE, statusCodeStr);
     element.insert(CCAPI_ERROR_MESSAGE, UtilString::trim(errorMessage));
+    element.insert(CCAPI_EXCHANGE, this->exchangeName);
     message.setElementList({element});
     event.setMessageList({message});
     this->eventHandler(event, eventQueuePtr);
@@ -1406,6 +1408,7 @@ class Service : public std::enable_shared_from_this<Service> {
         Element element(true);
         auto& connectionId = wsConnectionPtr->id;
         element.insert(CCAPI_CONNECTION_ID, connectionId);
+        element.insert(CCAPI_EXCHANGE, this->exchangeName);
         message.setElementList({element});
         event.setMessageList({message});
         this->eventHandler(event, nullptr);
@@ -1444,6 +1447,7 @@ class Service : public std::enable_shared_from_this<Service> {
     Element element;
     element.insert(CCAPI_CONNECTION_ID, wsConnection.id);
     element.insert(CCAPI_CONNECTION_URL, wsConnection.getUrl());
+    element.insert(CCAPI_EXCHANGE, this->exchangeName);
     message.setElementList({element});
     event.setMessageList({message});
     this->eventHandler(event, nullptr);
@@ -1605,6 +1609,7 @@ class Service : public std::enable_shared_from_this<Service> {
     element.insert(CCAPI_CONNECTION_ID, wsConnection.id);
     element.insert(CCAPI_CONNECTION_URL, wsConnection.getUrl());
     element.insert(CCAPI_REASON, reason);
+    element.insert(CCAPI_EXCHANGE, this->exchangeName);
     message.setElementList({element});
     std::vector<std::string> correlationIdList;
     for (const auto& subscription : wsConnection.subscriptionList) {
